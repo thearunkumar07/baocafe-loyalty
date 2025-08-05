@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bao Cafe Loyalty Checker | Earn Points & Rewards</title>
+    <link rel="icon" type="image/png" href="images/Final-logo-japanes.jpeg" />
+    <meta name="description" content="Check your loyalty points at Bao Cafe. Enter your mobile number to see your points and rewards.">
+    <meta name="keywords" content="Bao Cafe, Loyalty Points, Rewards, bao cafe loyalty, bao cafe rewards, bao cafe loylaty points">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&family=Inter:wght@300;400;500;600;700&family=Crimson+Text:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  </head>
+<body>
+    <!-- Navigation Header -->
+    <nav class="navbar" data-testid="navbar">
+        <div class="nav-container">
+            <div class="nav-content">
+                <!-- Logo Section -->
+                <div class="logo-section" data-testid="logo-section">
+                    <img src="images/Final-logo-japanes.jpeg" alt="Bao Cafe Logo" class="bao-navbar-logo-img" />
+                </div>
+
+                <!-- Desktop Navigation -->
+                <div class="desktop-nav" data-testid="desktop-nav">
+                    <a href="https://baocafe.in/" class="nav-link" data-testid="nav-home">Home</a>
+                    <span class="nav-link active" data-testid="nav-loyalty-active">Loyalty Check</span>
+                    <a href="https://baocafe.in/" class="nav-link" data-testid="nav-menu">Menu</a>
+                    <a href="https://baocafe.in/" class="nav-link" data-testid="nav-contact">Contact</a>
+                    <button class="nav-button" data-testid="button-franchise">Franchise Enquiry</button>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button class="mobile-menu-btn" onclick="toggleMobileMenu()" data-testid="button-mobile-menu">
+                    <span class="menu-icon" id="menu-icon">☰</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div class="mobile-menu" id="mobile-menu" data-testid="mobile-menu">
+            <div class="mobile-menu-content">
+                <a href="https://baocafe.in/" class="mobile-nav-link" data-testid="mobile-nav-home">Home</a>
+                <span class="mobile-nav-link active" data-testid="mobile-nav-loyalty-active">Loyalty Check</span>
+                <a href="https://baocafe.in/" class="mobile-nav-link" data-testid="mobile-nav-menu">Menu</a>
+                <a href="https://baocafe.in/" class="mobile-nav-link" data-testid="mobile-nav-contact">Contact</a>
+                <button class="mobile-nav-button" data-testid="mobile-button-franchise">Franchise Enquiry</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Header Section -->
+        <div class="header-section" data-testid="header-section">
+            <div class="header-content">
+                <div class="header-icons">
+                   
+                    <h2 class="main-title" data-testid="title-loyalty">Loyalty Rewards</h2>
+                    
+                </div>
+                                <p class="description" data-testid="description">
+                  Check your rewards and tier bao, salads, and bubble tea treats await! <br> Just enter your mobile number.
+                </p>
+            </div>
+        </div>
+
+        <!-- Loyalty Checker Card -->
+        <div class="card-container">
+            <div class="loyalty-card" data-testid="loyalty-card">
+                <!-- Card Header -->
+                <div class="card-header">
+                    <div class="header-overlay"></div>
+                    <div class="header-content-wrapper">
+                        <h3 class="card-title" data-testid="card-title">Check Your Rewards</h3>
+                    </div>
+                  
+                </div>
+
+                <!-- Card Content -->
+                <div class="card-content">
+                    <!-- Form Section -->
+                    <div id="form-section" data-testid="loyalty-form">
+                        <form onsubmit="checkLoyalty(event)">
+                            <div class="form-group">
+                                <label for="mobile" class="form-label">
+                                    Mobile Number
+                                    <span class="required">*</span>
+                                </label>
+                                <div class="input-wrapper">
+                                    <i class="fas fa-phone input-icon"></i>
+                                    <input
+                                        type="tel"
+                                        id="mobile"
+                                        class="form-input"
+                                        placeholder="Enter your 10-digit mobile number"
+                                        maxlength="10"
+                                        required
+                                        data-testid="input-mobile"
+                                    >
+                                </div>
+                                <p class="input-help">We'll use this to find your loyalty account</p>
+                            </div>
+
+                            <button type="submit" class="submit-button" id="submit-btn" data-testid="button-check-rewards">
+                                <span class="button-content">Check My Rewards </span>
+                                <div class="button-shine"></div>
+                            </button>
+                        </form>
+                    </div>
+
+                    <!-- Loading State -->
+                    <div id="loading-section" class="loading-section hidden">
+                        <div class="loading-spinner"></div>
+                        <p>Checking your rewards...</p>
+                    </div>
+
+                    <!-- Error State -->
+                    <div id="error-section" class="error-section hidden" data-testid="error-state">
+                        <div class="error-content">
+                            <div class="error-icon">⚠️</div>
+                            <div class="error-details">
+                                <h4 class="error-title">Unable to Find Account</h4>
+                                <p class="error-message" data-testid="error-message" id="error-message">
+                                    Please check your mobile number and try again.
+                                </p>
+                                <div class="store-info">
+                                    <p class="store-title">Visit Our Store</p>
+                                    <div class="store-details">
+                                        <p>Multiple locations across the city</p>
+                                        <p>Contact: help@baocafe.in</p>
+                                        <p>Open daily 11:00 AM - 11:00 PM</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Success State -->
+                    <div id="success-section" class="success-section hidden" data-testid="success-state">
+                        <!-- Customer Info -->
+                        <div class="customer-info">
+                            <div class="customer-header">
+                                <div class="customer-avatar">
+                                    <i class="fas fa-user avatar-icon"></i>
+                                </div>
+                                <div class="customer-details">
+                                    <h4 class="welcome-message" data-testid="welcome-message">Welcome back!</h4>
+                                    <p class="customer-name" data-testid="customer-name" id="customer-name"></p>
+                                </div>
+                            </div>
+                            <div class="celebration-icon">🎉</div>
+                        </div>
+
+                        <!-- Points Display -->
+                        <div class="points-card" data-testid="points-card">
+                            <div class="points-display">
+                                <div class="points-number" data-testid="points-display" id="points-display">0</div>
+                                <p class="points-label">Loyalty Points</p>
+
+                            </div>
+                        </div>
+
+
+
+                        <button class="check-another-btn" onclick="resetForm()" data-testid="button-check-another">
+                            Check Another Number
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Additional Info Section -->
+        <div class="info-section" data-testid="info-section">
+            <div class="info-card">
+                <h4 class="info-title" data-testid="store-visit-title">Visit Our Store</h4>
+                <p class="info-experience" data-testid="store-experience">Experience Authentic Bao</p>
+                <div class="info-details">
+                    <p data-testid="store-locations">Multiple locations across the city</p>
+                    <p data-testid="store-franchise">Contact us for franchise opportunities</p>
+                    <p data-testid="store-hours">Open daily 11:00 AM - 11:00 PM</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Floating Action Buttons 
+    <div class="floating-buttons" data-testid="floating-elements">
+        <button class="floating-btn chat-btn" data-testid="button-chat">
+            <span class="btn-icon">💬</span>
+        </button>
+        <button class="floating-btn call-btn" data-testid="button-call">
+            <span class="btn-icon">📞</span>
+        </button>
+    </div>-->
+
+    <script src="script.js"></script>
+</body>
+</html>
