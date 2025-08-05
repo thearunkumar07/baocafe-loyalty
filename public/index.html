@@ -18,14 +18,15 @@
             <div class="nav-content">
                 <!-- Logo Section -->
                 <div class="logo-section" data-testid="logo-section">
-                    <img src="images/Final-logo-japanes.jpeg" alt="Bao Cafe Logo" class="bao-navbar-logo-img" />
+                    <a href="https://baocafe.in/" data-testid="logo-link">
+                        <img src="images/Final-logo-japanes.jpeg" alt="Bao Cafe Logo" class="bao-navbar-logo-img" />
+                    </a>
                 </div>
 
                 <!-- Desktop Navigation -->
                 <div class="desktop-nav" data-testid="desktop-nav">
                     <a href="https://baocafe.in/" class="nav-link" data-testid="nav-home">Home</a>
-                    <span class="nav-link active" data-testid="nav-loyalty-active">Loyalty Check</span>
-                    <a href="https://baocafe.in/" class="nav-link" data-testid="nav-menu">Menu</a>
+                    <a href="#" class="nav-link active" data-testid="nav-loyalty" >Loyalty Check</a>
                     <a href="https://baocafe.in/" class="nav-link" data-testid="nav-contact">Contact</a>
                     <button class="nav-button" data-testid="button-franchise">Franchise Enquiry</button>
                 </div>
@@ -41,8 +42,7 @@
         <div class="mobile-menu" id="mobile-menu" data-testid="mobile-menu">
             <div class="mobile-menu-content">
                 <a href="https://baocafe.in/" class="mobile-nav-link" data-testid="mobile-nav-home">Home</a>
-                <span class="mobile-nav-link active" data-testid="mobile-nav-loyalty-active">Loyalty Check</span>
-                <a href="https://baocafe.in/" class="mobile-nav-link" data-testid="mobile-nav-menu">Menu</a>
+                <a href="#" class="mobile-nav-link active" data-testid="mobile-nav-loyalty" >Loyalty Check</a>
                 <a href="https://baocafe.in/" class="mobile-nav-link" data-testid="mobile-nav-contact">Contact</a>
                 <button class="mobile-nav-button" data-testid="mobile-button-franchise">Franchise Enquiry</button>
             </div>
@@ -128,12 +128,23 @@
                                     <p class="store-title">Visit Our Store</p>
                                     <div class="store-details">
                                         <p>Multiple locations across the city</p>
-                                        <p>Contact: help@baocafe.in</p>
+                                       <p>
+                                            Contact:
+                                            <a href="mailto:help@baocafe.in" style=" color: #A16207; text-decoration:none; font-weight:500;">
+                                                help@baocafe.in
+                                            </a>
+                                            </p>
                                         <p>Open daily 11:00 AM - 11:00 PM</p>
+                                        
                                     </div>
+                                    
                                 </div>
+                                <button class="check-another-btn" onclick="resetForm()" data-testid="button-check-another" >
+                                    Check Another Number
+                                </button>
                             </div>
                         </div>
+                        
                     </div>
 
                     <!-- Success State -->
@@ -149,7 +160,7 @@
                                     <p class="customer-name" data-testid="customer-name" id="customer-name"></p>
                                 </div>
                             </div>
-                            <div class="celebration-icon">🎉</div>
+                            
                         </div>
 
                         <!-- Points Display -->
@@ -178,7 +189,11 @@
                 <p class="info-experience" data-testid="store-experience">Experience Authentic Bao</p>
                 <div class="info-details">
                     <p data-testid="store-locations">Multiple locations across the city</p>
-                    <p data-testid="store-franchise">Contact us for franchise opportunities</p>
+                    <p data-testid="store-franchise">
+                        <a href="https://baocafe.in/" style="color: #6B7280; text-decoration: none; font-weight: 500;">
+                            Contact us for franchise opportunities
+                        </a>
+                    </p>
                     <p data-testid="store-hours">Open daily 11:00 AM - 11:00 PM</p>
                 </div>
             </div>
@@ -196,5 +211,13 @@
     </div>-->
 
     <script src="script.js"></script>
+    <script>
+  document.querySelectorAll('.mobile-nav-button, .nav-button').forEach(function(btn) {
+    btn.addEventListener('click', function () {
+      window.location.href = 'https://baocafe.in/';
+    });
+  });
+</script>
+
 </body>
 </html>
