@@ -715,6 +715,17 @@ body::before {
     font-weight: 500;
     cursor: pointer;
 }
+.check-btn {
+    margin-top: 16px;
+    margin-left: 50px;
+    background: #A16207;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    font-weight: 500;
+    cursor: pointer;
+}
 
 /* Responsive Design */
 @media (max-width: 768px) {
